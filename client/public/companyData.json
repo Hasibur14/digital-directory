@@ -1,0 +1,122 @@
+[
+    {
+        "company_name": "Alpha Technologies",
+        "company_representative": "John Doe",
+        "membership_number": "M12345",
+        "designation": "CEO",
+        "nature_of_business": "Software Development",
+        "office_address": "123 Main St, Dhaka"
+    },
+    {
+        "company_name": "Beta Industries",
+        "company_representative": "Jane Smith",
+        "membership_number": "M67890",
+        "designation": "Managing Director",
+        "nature_of_business": "Manufacturing",
+        "office_address": "456 Industrial Area, Chittagong"
+    },
+    {
+        "company_name": "Gamma Enterprises",
+        "company_representative": "Michael Brown",
+        "membership_number": "M11223",
+        "designation": "General Manager",
+        "nature_of_business": "Retail",
+        "office_address": "789 Commerce Blvd, Dhaka"
+    },
+    {
+        "company_name": "Delta Solutions",
+        "company_representative": "Emily Davis",
+        "membership_number": "M44556",
+        "designation": "COO",
+        "nature_of_business": "IT Services",
+        "office_address": "101 Tech Park, Sylhet"
+    },
+    {
+        "company_name": "Epsilon Traders",
+        "company_representative": "William Wilson",
+        "membership_number": "M77889",
+        "designation": "Sales Director",
+        "nature_of_business": "Wholesale Trading",
+        "office_address": "202 Market Road, Khulna"
+    },
+    {
+        "company_name": "Zeta Logistics",
+        "company_representative": "Olivia Miller",
+        "membership_number": "M99101",
+        "designation": "Logistics Manager",
+        "nature_of_business": "Logistics and Transportation",
+        "office_address": "303 Cargo St, Dhaka"
+    },
+    {
+        "company_name": "Eta Energy",
+        "company_representative": "James Johnson",
+        "membership_number": "M23232",
+        "designation": "Project Manager",
+        "nature_of_business": "Energy and Power",
+        "office_address": "404 Green Way, Rajshahi"
+    },
+    {
+        "company_name": "Theta Constructions",
+        "company_representative": "Sophia Martinez",
+        "membership_number": "M34343",
+        "designation": "Director of Operations",
+        "nature_of_business": "Construction",
+        "office_address": "505 Builder Lane, Barishal"
+    },
+    {
+        "company_name": "Iota Pharmaceuticals",
+        "company_representative": "Benjamin Garcia",
+        "membership_number": "M45454",
+        "designation": "Head of Research",
+        "nature_of_business": "Pharmaceuticals",
+        "office_address": "606 Health Blvd, Dhaka"
+    },
+    {
+        "company_name": "Kappa Finance",
+        "company_representative": "Isabella Rodriguez",
+        "membership_number": "M56565",
+        "designation": "Chief Financial Officer",
+        "nature_of_business": "Financial Services",
+        "office_address": "707 Bank St, Dhaka"
+    },
+    {
+        "company_name": "Lambda Textiles",
+        "company_representative": "Matthew Lewis",
+        "membership_number": "M67676",
+        "designation": "Production Manager",
+        "nature_of_business": "Textile Manufacturing",
+        "office_address": "808 Fabric Avenue, Gazipur"
+    },
+    {
+        "company_name": "Mu Media",
+        "company_representative": "Ava Lee",
+        "membership_number": "M78787",
+        "designation": "Creative Director",
+        "nature_of_business": "Media and Advertising",
+        "office_address": "909 Ad Street, Dhaka"
+    },
+    {
+        "company_name": "Nu Foods",
+        "company_representative": "Christopher Hall",
+        "membership_number": "M89898",
+        "designation": "Marketing Director",
+        "nature_of_business": "Food Processing",
+        "office_address": "1001 Taste Blvd, Narayanganj"
+    },
+    {
+        "company_name": "Xi Communications",
+        "company_representative": "Charlotte King",
+        "membership_number": "M90909",
+        "designation": "Public Relations Manager",
+        "nature_of_business": "Telecommunications",
+        "office_address": "1102 Signal Road, Dhaka"
+    },
+    {
+        "company_name": "Omicron Healthcare",
+        "company_representative": "Daniel White",
+        "membership_number": "M12121",
+        "designation": "Chief Medical Officer",
+        "nature_of_business": "Healthcare Services",
+        "office_address": "1203 Wellness Lane, Dhaka"
+    }
+]
