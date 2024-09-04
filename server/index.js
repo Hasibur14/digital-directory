@@ -11,7 +11,7 @@ app.use(express.json());
 
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = "mongodb+srv://digital:fnH8uAoX1Ku2flGN@cluster0.lfxjcnl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -34,7 +34,13 @@ async function run() {
             res.send(result)
         });
 
-
+        // Get a single company data from db using  id
+        app.get('/company/:id', async (req, res) => {
+            const id = req.params.id
+            const query = { _id: new ObjectId(id) }
+            const result = await companyCollection.findOne(query)
+            res.send(result)
+        });
 
         // company filtering by alphabet
         app.get('/company/:letter', async (req, res) => {

@@ -5,7 +5,6 @@ const FilterModal = ({ isOpen, onClose, onApply }) => {
     const [filters, setFilters] = useState({
         companyName: '',
         companyRepresentative: '',
-        date: '',
         designation: '',
         category: ''
     });
@@ -36,7 +35,7 @@ const FilterModal = ({ isOpen, onClose, onApply }) => {
                             name="companyName"
                             value={filters.companyName}
                             onChange={handleInputChange}
-                            className="mt-1 block w-full rounded-md border-green-300 border-b-4 shadow-sm bg-neutral-100 p-2">
+                            className="mt-1 block w-full rounded-md border-neutral-700 border-b-4 shadow-sm bg-neutral-100 p-2">
                             <option>Select Category</option>
                             <option>Category 1</option>
                         </select>
@@ -47,7 +46,7 @@ const FilterModal = ({ isOpen, onClose, onApply }) => {
                             name="companyRepresentative"
                             value={filters.companyRepresentative}
                             onChange={handleInputChange}
-                            className="mt-1 block w-full rounded-md border-green-300 border-b-4 shadow-sm bg-neutral-100 p-2">
+                            className="mt-1 block w-full rounded-md border-neutral-700 border-b-4 shadow-sm bg-neutral-100 p-2">
                             <option>Select Category</option>
                             <option>Category 1</option>
                         </select>
@@ -58,7 +57,7 @@ const FilterModal = ({ isOpen, onClose, onApply }) => {
                             name="designation"
                             value={filters.designation}
                             onChange={handleInputChange}
-                            className="mt-1 block w-full rounded-md border-green-300 border-b-4 shadow-sm bg-neutral-100 p-2">
+                            className="mt-1 block w-full rounded-md border-neutral-700 border-b-4 shadow-sm bg-neutral-100 p-2">
                             <option>Select</option>
                             <option>Category 1</option>
                         </select>
@@ -69,7 +68,7 @@ const FilterModal = ({ isOpen, onClose, onApply }) => {
                             name="category"
                             value={filters.category}
                             onChange={handleInputChange}
-                            className="mt-1 block w-full rounded-md border-green-300 border-b-4 shadow-sm bg-neutral-100 p-2">
+                            className="mt-1 block w-full rounded-md border-neutral-700 border-b-4 shadow-sm bg-neutral-100 p-2">
                             <option>Select Status</option>
 
                         </select>

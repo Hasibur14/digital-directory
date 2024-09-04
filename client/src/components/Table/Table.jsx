@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { FaRegEye } from "react-icons/fa6";
+import { MdOutlineBrowserUpdated } from "react-icons/md";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import search from "../../assets/search.png";
 import FilterModal from "../Modal/FilterModal";
 
@@ -63,6 +67,9 @@ const Table = ({ companyInfo }) => {
                                         <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left text-gray-900 dark:text-gray-400">Office Address</th>
                                         <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left text-gray-900 dark:text-gray-400">Telephone</th>
                                         <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left uppercase text-gray-900 dark:text-gray-400">Email</th>
+                                        <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left uppercase text-gray-900 dark:text-gray-400">View</th>
+                                        <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left uppercase text-gray-900 dark:text-gray-400">Edit</th>
+                                        <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left uppercase text-gray-900 dark:text-gray-400">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white dark:divide-gray-700 dark:bg-gray-900">
@@ -72,9 +79,13 @@ const Table = ({ companyInfo }) => {
                                             className={`hover:bg-neutral-100 ${index % 2 === 0 ? 'bg-cyan-50 dark:bg-gray-800' : 'bg-white dark:bg-gray-900'}`}
                                         >
                                             <td className="font-medium dark:text-gray-200 whitespace-nowrap">
-                                                <div className="bg-blue-200 rounded-r-full">
-                                                    <img className="w-20 h-12 p-1" src={search} alt="search" />
-                                                </div>
+                                                <Link to={`/company/${item._id}`}>
+                                                    <div
+                                                        className="bg-blue-200 rounded-r-full w-10  h-100">
+                                                        <img className=" p-1" src={search} alt="search" />
+                                                    </div>
+                                                </Link>
+
                                             </td>
                                             <td className="px-4 py-3 text-sm font-medium dark:text-gray-200 whitespace-nowrap">
                                                 <div className="bg-teal-300 text-center rounded-full p-3">
@@ -83,7 +94,7 @@ const Table = ({ companyInfo }) => {
                                             </td>
                                             <td className="px-6 py-2 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                 <div className="flex items-center gap-x-2">
-                                                    <img className="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="Company Representative" />
+                                                    <img className="object-cover w-8 h-8 rounded-full" src={"https://i.ibb.co/mFjYLYS/titleImg.png"} alt="Company Representative" />
                                                     <div>
                                                         <h2 className="font-medium text-gray-800 dark:text-white">{item.company_name}</h2>
                                                         <p className="text-sm font-normal text-gray-600 dark:text-gray-400">{item.category}</p>
@@ -92,7 +103,7 @@ const Table = ({ companyInfo }) => {
                                             </td>
                                             <td className="px-6 py-3 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                 <div className="flex items-center gap-x-2">
-                                                    <img className="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="Company Representative" />
+                                                    <img className="object-cover w-8 h-8 rounded-full" src={"https://i.ibb.co/7Ymcn37/Ellipse-1.png"} alt="Company Representative" />
                                                     <div>{item.company_representative}</div>
                                                 </div>
                                             </td>
@@ -102,6 +113,21 @@ const Table = ({ companyInfo }) => {
                                             <td className="px-4 py-3 text-sm dark:text-gray-300 whitespace-nowrap">{item.office_address}</td>
                                             <td className="px-4 py-3 text-sm dark:text-gray-300 whitespace-nowrap">{item.telephone}</td>
                                             <td className="px-4 py-1 text-sm dark:text-gray-300 whitespace-nowrap">{item.email}</td>
+                                            <td className="p-3">
+                                                <FaRegEye
+                                                    // onClick={() => handleDeleteReview(review)}
+                                                    className="text-3xl p-1 text-white bg-orange-400 hover:scale-110 rounded" />
+                                            </td>
+                                            <td className="p-3">
+                                                <MdOutlineBrowserUpdated
+                                                    // onClick={() => handleDeleteReview(review)}
+                                                    className="text-3xl p-1 text-white bg-green-500 hover:scale-110 rounded" />
+                                            </td>
+                                            <td className="p-3">
+                                                <RiDeleteBinLine
+                                                    // onClick={() => handleDeleteReview(review)}
+                                                    className="text-3xl p-1 text-white bg-red-600 hover:scale-110 rounded" />
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
