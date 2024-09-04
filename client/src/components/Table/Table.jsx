@@ -73,7 +73,7 @@ const Table = ({ companyInfo }) => {
                                         >
                                             <td className="font-medium dark:text-gray-200 whitespace-nowrap">
                                                 <div className="bg-blue-200 rounded-r-full">
-                                                    <img className="w-20" src={search} alt="search" />
+                                                    <img className="w-20 h-12 p-1" src={search} alt="search" />
                                                 </div>
                                             </td>
                                             <td className="px-4 py-3 text-sm font-medium dark:text-gray-200 whitespace-nowrap">

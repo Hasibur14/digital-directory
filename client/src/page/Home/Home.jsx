@@ -26,7 +26,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchCompanyNames = async () => {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/companys/names`);
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/companyNames/names`);
             const data = await res.json();
             setCompanyNames(data);
         };
@@ -37,7 +37,7 @@ const Home = () => {
     useEffect(() => {
         const fetchCompanies = async () => {
             const url = selectedCompany
-                ? `${import.meta.env.VITE_API_URL}/company/filter?name=${encodeURIComponent(selectedCompany)}`
+                ? `${import.meta.env.VITE_API_URL}/companyName/filter?name=${encodeURIComponent(selectedCompany)}`
                 : `${import.meta.env.VITE_API_URL}/company`;
 
             const res = await fetch(url);
@@ -83,7 +83,7 @@ const Home = () => {
                                 <span className="absolute bottom-4 right-0 bg-red-600 rounded-full text-white p-1 ml-1">45</span>
                             </h4>
                             <h4 className="w-[50%] bg-red-100 text-red-500 px-5 py-2 rounded-xl relative">Pending
-                                <span className="absolute bottom-4 right-0 bg-red-600 rounded-full text-white p-1">45</span>
+                                <span className="absolute bottom-4 right-0 bg-red-600 rounded-full text-white p-1">25</span>
                             </h4>
                         </div>
                         <h4 className="text-lg py-3 md:py-0">Directory Need To update <a className="text-red-500 border-b-2 border-red-600">View All</a></h4>
@@ -205,50 +205,40 @@ const Home = () => {
 
                                 </ul>
                             )}
-                </div>
-            </div>
-
-            {/* Filter by Company Name */}
-            <div className="lg:w-[50%] shadow-2xl px-5 py-6 rounded-2xl border-2 relative">
-                <h2 className="text-xl font-semibold">Filter By Company Name</h2>
-                <div className="flex bg-cyan-300 rounded-full text-center mt-8">
-                    <div className="flex bg-cyan-300 rounded-3xl py-[6px] justify-between px-4 text-center gap-[18px]">
-                        {companyNames.slice(0, 5).map((companyName) => (
-                            <span
-                                key={companyName}
-                                className="bg-white w-10 rounded-full px-1 py-[6px] text-center cursor-pointer truncate"
-                                onClick={() => handleCompanySelect(companyName)}
-                            >
-                                {companyName.slice(0, 3).toUpperCase()}
-                            </span>
-                        ))}
+                        </div>
                     </div>
-                    <span>
-                        <IoIosArrowForward
-                            onClick={toggleDropdownCompanyName}
-                            className={`text-2xl text-center items-center mt-3 mr-2 transition-transform ${isDropdownCompanyNameOpen ? 'rotate-90' : ''}`}
-                        />
-                    </span>
-                </div>
 
-                {/* Dropdown menu */}
-                {isDropdownCompanyNameOpen && (
-                    <div className="absolute flex gap-2 bg-white shadow-2xl p-5 z-10 rounded-xl mt-5 w-full flex-wrap">
-                        {companyNames.slice(5).map(companyName => (
-                            <span
-                                key={companyName}
-                                className="border px-3 rounded-lg shadow-xl cursor-pointer truncate"
-                                onClick={() => handleCompanySelect(companyName)}
+                    {/* Filter by Company Name */}
+                    <div className="w-full lg:w-[50%] lg:h-40 shadow-2xl px-6 py-5 rounded-2xl border">
+                        <h2 className="text-xl font-semibold">Filter By Company</h2>
+                        <div className="relative mt-8">
+                            <button
+                                tabIndex={0}
+                                className="flex border border-red-500 px-5 py-3 rounded-full w-full justify-between m-1 "
+                                onClick={toggleDropdownCompanyName}
                             >
-                                {companyName}
-                            </span>
-                        ))}
+                                Find Company Name
+                                <IoIosArrowForward
+                                    className="text-2xl text-center items-center ml-4" />
+                            </button>
+                            {isDropdownCompanyNameOpen && (
+                                <ul className="absolute top-full left-0 mt-2 bg-white p-2 space-y-2 border-2 rounded w-full max-h-44 overflow-auto z-50">
+                                    {companyNames?.map(name => (
+                                        <li
+                                            key={name}
+                                            className="cursor-pointer p-2 hover:bg-gray-200"
+                                            onClick={() => handleCompanySelect(name)}
+                                        >
+                                            {name}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
                     </div>
-                )}
-            </div>
-        </div>
+                </div>
             </div >
-    <Table companyInfo={companyInfo} />
+            <Table companyInfo={companyInfo} />
         </div >
     );
 };

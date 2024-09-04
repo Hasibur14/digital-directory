@@ -46,7 +46,7 @@ async function run() {
 
 
 
-        app.get('/companys/names', async (req, res) => {
+        app.get('/companyNames/names', async (req, res) => {
             const cursor = companyCollection.find({}, { projection: { _id: 0, company_name: 1 } });
             const companyNames = await cursor.toArray();
             console.log(companyNames)
@@ -54,7 +54,7 @@ async function run() {
         });
 
 
-        app.get('/company/filter', async (req, res) => {
+        app.get('/companyName/filter', async (req, res) => {
             const { name } = req.query;
             console.log("Filtering by name:", name);
             const query = name ? { company_name: { $regex: name, $options: 'i' } } : {};
