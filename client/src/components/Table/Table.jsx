@@ -114,9 +114,12 @@ const Table = ({ companyInfo }) => {
                                             <td className="px-4 py-3 text-sm dark:text-gray-300 whitespace-nowrap">{item.telephone}</td>
                                             <td className="px-4 py-1 text-sm dark:text-gray-300 whitespace-nowrap">{item.email}</td>
                                             <td className="p-3">
-                                                <FaRegEye
-                                                    // onClick={() => handleDeleteReview(review)}
-                                                    className="text-3xl p-1 text-white bg-orange-400 hover:scale-110 rounded" />
+                                                <Link to={`/company/${item._id}`}>
+                                                    <FaRegEye
+
+                                                        className="text-3xl p-1 text-white bg-orange-400 hover:scale-110 rounded" />
+                                                </Link>
+
                                             </td>
                                             <td className="p-3">
                                                 <MdOutlineBrowserUpdated

@@ -42,6 +42,7 @@ async function run() {
             res.send(result)
         });
 
+
         // company filtering by alphabet
         app.get('/company/:letter', async (req, res) => {
             const letter = req.params.letter.toUpperCase();
@@ -68,8 +69,6 @@ async function run() {
             console.log("Filtered Result:", result);
             res.send(result);
         });
-
-
 
 
         console.log("Pinged your deployment. You successfully connected to MongoDB!");

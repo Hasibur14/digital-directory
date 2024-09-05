@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 
@@ -9,7 +9,10 @@ const CompanyDetails = () => {
     const { _id, company_name, company_representative, membership_number, designation, nature_of_business, office_address, telephone, email, category } = companyInfo;
 
     return (
-        <div className="max-w-4xl mx-auto my-12 border px-16 py-10 bg-white shadow-lg rounded-lg">
+        <div className="max-w-4xl mx-auto my-12 border px-16 py-10 bg-neutral-50 shadow-lg rounded-lg">
+            <Link to="/">
+            <button></button>
+            </Link >
             <div className="text-xl">
                 <div className="lg:flex justify-between gap-14">
                     <img className="lg:w-[415px] rounded" src={"https://i.ibb.co/D4qQ9yZ/istockphoto-1335941248-612x612.jpg"} alt="" />

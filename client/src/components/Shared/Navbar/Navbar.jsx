@@ -2,7 +2,7 @@ import title from '../../../assets/title.png';
 
 const Navbar = () => {
     return (
-        <div className='bg-black'>
+        <div className='bg-neutral-800'>
             <div className="navbar container mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -23,17 +23,19 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                           
+
                         </ul>
                     </div>
-                    <a><img className='w-32' src={title} alt="Digital Directory" /></a>
+                    <a>
+                        <img className='w-36' src={title} alt="Digital Directory" />
+                    </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                       
+
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end hidden lg:flex">
                     <label className="input input-bordered flex items-center gap-2">
                         <input type="text" className="grow" placeholder="Search" />
                         <svg
