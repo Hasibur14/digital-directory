@@ -10,9 +10,11 @@ const CompanyDetails = () => {
 
     return (
         <div className="max-w-4xl mx-auto my-12 border px-16 py-10 bg-neutral-50 shadow-lg rounded-lg">
-            <Link to="/">
-            <button></button>
-            </Link >
+            <div className=" flex justify-end">
+                <Link to="/">
+                    <button className="btn bg-blue-900 rounded-full cursor-pointer px-5 text-white hover:bg-blue-500">Go Back</button>
+                </Link >
+            </div>
             <div className="text-xl">
                 <div className="lg:flex justify-between gap-14">
                     <img className="lg:w-[415px] rounded" src={"https://i.ibb.co/D4qQ9yZ/istockphoto-1335941248-612x612.jpg"} alt="" />

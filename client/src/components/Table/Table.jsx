@@ -1,12 +1,24 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FaRegEye } from "react-icons/fa6";
 import { MdOutlineBrowserUpdated } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 import search from "../../assets/search.png";
+import useAxios from "../../hooks/useAxios";
+import useCompany from "../../hooks/useCompany";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import FilterModal from "../Modal/FilterModal";
 
-const Table = ({ companyInfo }) => {
+
+
+
+const Table = () => {
+
+    const [company, loading, refetch] = useCompany();
+    const axiosPublic = useAxios()
+
     const [visibleRows, setVisibleRows] = useState(10);
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,13 +41,44 @@ const Table = ({ companyInfo }) => {
         // Implement your filtering logic here
     };
 
+
+
+    //Delete service
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosPublic.delete(`/companyDelete/${_id}`);
+                if (res.data.deletedCount > 0) {
+                    refetch()
+                    toast.success('Company Data has been deleted!');
+                }
+            }
+        });
+    };
+
+
+    if (loading) {
+        return <LoadingSpinner></LoadingSpinner>
+    }
+
+
     return (
         <div className="shadow-2xl border rounded-2xl my-16 px-10 py-5">
             <div className="md:flex justify-between">
                 <h2 className="text-2xl font-bold">Community</h2>
                 <div className="flex gap-5 text-white mt-4 md:mt-0">
                     <div className="bg-green-500 py-1 px-3 rounded cursor-pointer">
-                        <h4 className="text-sm font-semibold">Add New Directory</h4>
+                        <Link to='/add-company-info'>
+                            <h4 className="text-sm font-semibold">Add New Directory</h4>
+                        </Link>
                     </div>
                     <button onClick={handleFilterClick} className="bg-yellow-500 py-1 px-3 rounded">
                         <h4 className="text-sm font-semibold">Filter Table</h4>
@@ -73,7 +116,7 @@ const Table = ({ companyInfo }) => {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white dark:divide-gray-700 dark:bg-gray-900">
-                                    {companyInfo?.slice(0, visibleRows).map((item, index) => (
+                                    {company?.slice(0, visibleRows).map((item, index) => (
                                         <tr
                                             key={index}
                                             className={`hover:bg-neutral-100 ${index % 2 === 0 ? 'bg-cyan-50 dark:bg-gray-800' : 'bg-white dark:bg-gray-900'}`}
@@ -122,13 +165,14 @@ const Table = ({ companyInfo }) => {
 
                                             </td>
                                             <td className="p-3">
-                                                <MdOutlineBrowserUpdated
-                                                    // onClick={() => handleDeleteReview(review)}
-                                                    className="text-3xl p-1 text-white bg-green-500 hover:scale-110 rounded" />
+                                                <Link to={`/company-update/${item._id}`}>
+                                                    <MdOutlineBrowserUpdated
+                                                        className="text-3xl p-1 text-white bg-green-500 hover:scale-110 rounded" />
+                                                </Link>
                                             </td>
                                             <td className="p-3">
                                                 <RiDeleteBinLine
-                                                    // onClick={() => handleDeleteReview(review)}
+                                                    onClick={() => handleDelete(item._id)}
                                                     className="text-3xl p-1 text-white bg-red-600 hover:scale-110 rounded" />
                                             </td>
                                         </tr>
@@ -140,7 +184,7 @@ const Table = ({ companyInfo }) => {
                 </div>
             </div>
 
-            {visibleRows < companyInfo?.length && (
+            {visibleRows < company?.length && (
                 <div className="flex justify-center items-center">
                     <button onClick={handleShowMore} className="btn bg-blue-400 hover:bg-blue-600 text-center rounded-lg">
                         <h3 className="px-3 py-1 text-white">Show More</h3>
