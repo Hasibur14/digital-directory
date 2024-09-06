@@ -14,8 +14,8 @@ const Home = () => {
     useEffect(() => {
         const fetchCompanies = async () => {
             const url = selectedLetter
-                ? `${import.meta.env.VITE_API_URL}/company/${selectedLetter}`
-                : `${import.meta.env.VITE_API_URL}/company`;
+                ? `${import.meta.env.VITE_API_URL}/companys/${selectedLetter}`
+                : `${import.meta.env.VITE_API_URL}/companys`;
             const res = await fetch(url);
             const data = await res.json();
             setCompanyInfo(data);
@@ -73,7 +73,7 @@ const Home = () => {
         <div className="container mx-auto my-10 p-4 lg:p-0">
             <div className="lg:flex justify-between gap-5">
                 {/* card-1 */}
-                <div className="lg:flex lg:w-[50%] shadow-2xl lg:h-40 px-5 py-4 rounded-2xl border font-bold lg:gap-16">
+                <div className="lg:flex lg:w-[50%] shadow-lg md:shadow-xl lg:h-40 px-5 py-4 rounded-2xl border font-bold lg:gap-16">
                     <div className="space-y-4 lg:w-[50%]">
                         <h2 className="text-2xl font-bold">
                             <a className="border-b-2 border-black">Digital Directory</a>
@@ -92,8 +92,8 @@ const Home = () => {
                         <div className="w-[47%] bg-gradient-to-t from-emerald-300 to-lime-200 rounded-3xl text-center p-5">
                             <h4 className="text-center">
                                 <span className="opacity-75">Total </span> <br />
-                                <span className="text-5xl font-semibold">50</span> <br />
-                                <span className="text-xl font-semibold opacity-75">Partners</span>
+                                <span className="text-5xl font-semibold">{ }</span> <br />
+                                <span className="text-xl font-semibold opacity-75">Industry</span>
                             </h4>
                         </div>
                         <div className="border-r-2"></div>
@@ -108,9 +108,9 @@ const Home = () => {
                 </div>
 
                 {/* card-2 */}
-                <div className="md:flex lg:w-[50%] lg:h-40 font-bold gap-5 mt-7 lg:mt-0 space-y-6 md:space-y-0">
+                <div className="md:flex lg:w-[50%] lg:h-40 font-bold gap-5 mt-10 lg:mt-0 space-y-8 md:space-y-0">
                     {/* Filter by Alphabet */}
-                    <div className="lg:w-[50%] shadow-2xl px-5 py-6 rounded-2xl border-2 relative">
+                    <div className="lg:w-[50%] shadow-lg md:shadow-2xl px-5 py-6 rounded-2xl border-2 relative">
                         <h2 className="text-xl font-semibold">Filter By Alphabet</h2>
                         <div>
                             <div className="flex bg-cyan-300 rounded-full text-center mt-8 ">
@@ -136,7 +136,7 @@ const Home = () => {
 
                             {/* Dropdown menu */}
                             {isDropdownOpen && (
-                                <ul className="absolute top-full left-0 mt-2 bg-white p-5 space-y-2 border-2 rounded w-full max-h-40 overflow-auto z-50">
+                                <ul className="absolute top-full left-0 mt-2 bg-white p-5 space-y-2 border-2 rounded w-full max-h-64 overflow-auto z-50">
                                     <li>
                                         <div className="flex bg-cyan-300 rounded-3xl py-[6px] justify-between px-4 text-center gap-[18px]">
                                             {['F', 'G', 'H', 'I', 'J'].map(letter => (
@@ -209,20 +209,20 @@ const Home = () => {
                     </div>
 
                     {/* Filter by Company Name */}
-                    <div className="w-full lg:w-[50%] lg:h-40 shadow-2xl px-6 py-5 rounded-2xl border">
-                        <h2 className="text-xl font-semibold">Filter By Company</h2>
+                    <div className="w-full lg:w-[50%] lg:h-40 shadow-lg md:shadow-2xl px-6 py-5 rounded-2xl border">
+                        <h2 className="text-xl font-semibold">Filter By Industry</h2>
                         <div className="relative mt-8">
                             <button
                                 tabIndex={0}
                                 className="flex border border-red-500 px-5 py-3 rounded-full w-full justify-between m-1 "
                                 onClick={toggleDropdownCompanyName}
                             >
-                                Find Company Name
+                                Find  Industry
                                 <IoIosArrowForward
                                     className="text-2xl text-center items-center ml-4" />
                             </button>
                             {isDropdownCompanyNameOpen && (
-                                <ul className="absolute top-full left-0 mt-2 bg-white p-2 space-y-2 border-2 rounded w-full max-h-44 overflow-auto z-50">
+                                <ul className="absolute top-full left-0 mt-2 bg-white p-2 space-y-2 border-2 rounded w-full max-h-64 overflow-auto z-50">
                                     {companyNames?.map(name => (
                                         <li
                                             key={name}

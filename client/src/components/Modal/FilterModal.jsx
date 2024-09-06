@@ -26,9 +26,9 @@ const FilterModal = ({ isOpen, onClose, onApply }) => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-white rounded-lg shadow-lg p-8 w-1/3">
+            <div className="bg-white rounded-lg shadow-lg p-8   lg:w-1/3">
                 <h2 className="text-2xl font-semibold mb-4">Filter Download</h2>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                     <div>
                         <label className="block text-gray-700 font-bold">Company Name</label>
                         <select

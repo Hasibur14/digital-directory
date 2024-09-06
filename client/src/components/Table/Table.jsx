@@ -1,23 +1,20 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { CiEdit } from "react-icons/ci";
 import { FaRegEye } from "react-icons/fa6";
-import { MdOutlineBrowserUpdated } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import search from "../../assets/search.png";
-import useAxios from "../../hooks/useAxios";
-import useCompany from "../../hooks/useCompany";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import FilterModal from "../Modal/FilterModal";
 
 
 
 
-const Table = () => {
+const Table = ({companyInfo}) => {
 
-    const [company, loading, refetch] = useCompany();
-    const axiosPublic = useAxios()
+    // const [company, loading, refetch] = useCompany();
+    // const axiosPublic = useAxios()
 
     const [visibleRows, setVisibleRows] = useState(10);
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -42,9 +39,9 @@ const Table = () => {
     };
 
 
-
-    //Delete service
-    const handleDelete = (_id) => {
+     //Delete service
+    const handleDelete = _id => {
+        console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -53,21 +50,20 @@ const Table = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then(async (result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-                const res = await axiosPublic.delete(`/companyDelete/${_id}`);
-                if (res.data.deletedCount > 0) {
-                    refetch()
-                    toast.success('Company Data has been deleted!');
-                }
+
+                fetch(`${import.meta.env.VITE_API_URL}/companyDelete/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        toast.success('Company Data has been deleted!');                      
+                    })
             }
         });
     };
-
-
-    if (loading) {
-        return <LoadingSpinner></LoadingSpinner>
-    }
 
 
     return (
@@ -116,7 +112,7 @@ const Table = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white dark:divide-gray-700 dark:bg-gray-900">
-                                    {company?.slice(0, visibleRows).map((item, index) => (
+                                    {companyInfo?.slice(0, visibleRows).map((item, index) => (
                                         <tr
                                             key={index}
                                             className={`hover:bg-neutral-100 ${index % 2 === 0 ? 'bg-cyan-50 dark:bg-gray-800' : 'bg-white dark:bg-gray-900'}`}
@@ -166,7 +162,7 @@ const Table = () => {
                                             </td>
                                             <td className="p-3">
                                                 <Link to={`/company-update/${item._id}`}>
-                                                    <MdOutlineBrowserUpdated
+                                                <CiEdit
                                                         className="text-3xl p-1 text-white bg-green-500 hover:scale-110 rounded" />
                                                 </Link>
                                             </td>
@@ -184,7 +180,7 @@ const Table = () => {
                 </div>
             </div>
 
-            {visibleRows < company?.length && (
+            {visibleRows < companyInfo?.length && (
                 <div className="flex justify-center items-center">
                     <button onClick={handleShowMore} className="btn bg-blue-400 hover:bg-blue-600 text-center rounded-lg">
                         <h3 className="px-3 py-1 text-white">Show More</h3>

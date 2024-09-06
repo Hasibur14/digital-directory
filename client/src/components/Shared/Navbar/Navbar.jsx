@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import title from '../../../assets/title.png';
 
 const Navbar = () => {
@@ -27,7 +28,9 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <a>
-                        <img className='w-36' src={title} alt="Digital Directory" />
+                        <Link to="/">
+                            <img className='w-36' src={title} alt="Digital Directory" />
+                        </Link>
                     </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">

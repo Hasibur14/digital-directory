@@ -44,7 +44,7 @@ async function run() {
 
 
         // company filtering by alphabet
-        app.get('/company/:letter', async (req, res) => {
+        app.get('/companys/:letter', async (req, res) => {
             const letter = req.params.letter.toUpperCase();
             const cursor = companyCollection.find({ company_name: { $regex: `^${letter}`, $options: 'i' } });
             const result = await cursor.toArray();
@@ -63,13 +63,20 @@ async function run() {
 
         app.get('/companyName/filter', async (req, res) => {
             const { name } = req.query;
-            console.log("Filtering by name:", name);
             const query = name ? { company_name: { $regex: name, $options: 'i' } } : {};
             const result = await companyCollection.find(query).toArray();
             console.log("Filtered Result:", result);
             res.send(result);
         });
 
+
+
+        //add Company info in db
+        app.post("/add-company", async (req, res) => {
+            const companyData = req.body
+            const result = await companyCollection.insertOne(companyData);
+            res.send(result)
+        })
 
 
         //Delete  data
@@ -96,7 +103,7 @@ async function run() {
         });
 
 
-        
+
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
 
