@@ -1,0 +1,43 @@
+
+
+/* Media query for screens between 1250px and 1536px */
+@media (min-width: 1290px) and (max-width: 1536px) {
+   .card-1 {
+ gap: 22px;
+   }
+
+   .directory-view  {
+    font-size: 16px;
+   }
+
+    .alphabet-card {
+        padding: 4px 10px;
+    }
+    .alphabet-card-text {
+        padding: 6px ;
+        margin-top: 12px;
+    }
+
+    .alphabet-text {
+        padding: 0px 12px;
+    }
+
+   .alphabet{
+    gap: 10px;
+    padding: 6px;
+    margin: 0px 2px;
+   }
+  
+  }
+  
+
+@media (min-width: 100px) and (max-width: 1289px) {
+   
+    .alphabet{
+     padding: 2px;
+
+    }
+   
+   
+   }
+   
