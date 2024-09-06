@@ -6,7 +6,7 @@ const CompanyDetails = () => {
 
     const companyInfo = useLoaderData()
 
-    const {  company_name, company_representative, membership_number, designation, office_address, telephone, email, whatsapp } = companyInfo;
+    const { company_name, company_img, company_representative, representative_img, membership_number, designation, office_address, telephone, email, whatsapp, company_profile } = companyInfo;
 
     return (
         <div className="px-4">
@@ -18,9 +18,15 @@ const CompanyDetails = () => {
                 </div>
                 <div className="text-xl space-y-4">
                     <div className="lg:flex gap-16">
-                        <img className="lg:w-[415px] rounded" src={"https://i.ibb.co/D4qQ9yZ/istockphoto-1335941248-612x612.jpg"} alt="company" />
+                        <img
+                            className="lg:w-[415px] h-96 rounded-xl border hover:scale-105 duration-300 transition"
+                            src={representative_img}
+                            alt="representative image" />
                         <div className="">
-                            <img className="w-32 h-28 my-5 lg:my-0" src={"https://i.ibb.co/cLxPNDY/title-a11.png"} alt="Company logo" />
+                            <img
+                                className="w-32 h-28 my-5 lg:my-0"
+                                src={company_img}
+                                alt="Company logo" />
                             <div className="space-y-5 lg:space-y-0">
                                 <div>
                                     <h2>Company Name</h2>
@@ -41,7 +47,7 @@ const CompanyDetails = () => {
                         </div>
                         <div>
                             <h2 className="text-xl font-bold">Company Profile</h2>
-                            <p>Objectively harness proactive synergy rather than top-line infrastructures. Holisticly seize.Monotonectally revolutionize process-centric architectures for clicks-and-mortar innovation. Rapidiously monetize 24/365.</p>
+                            <p>{company_profile}</p>
                         </div>
                         <div>
                             <h2 className="text-xl font-bold">Corporate Office</h2>

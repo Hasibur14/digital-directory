@@ -11,7 +11,7 @@ import FilterModal from "../Modal/FilterModal";
 
 
 
-const Table = ({companyInfo}) => {
+const Table = ({ companyInfo }) => {
 
     // const [company, loading, refetch] = useCompany();
     // const axiosPublic = useAxios()
@@ -39,7 +39,7 @@ const Table = ({companyInfo}) => {
     };
 
 
-     //Delete service
+    //Delete service
     const handleDelete = _id => {
         console.log(_id);
         Swal.fire({
@@ -59,7 +59,7 @@ const Table = ({companyInfo}) => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
-                        toast.success('Company Data has been deleted!');                      
+                        toast.success('Company Data has been deleted!');
                     })
             }
         });
@@ -71,18 +71,18 @@ const Table = ({companyInfo}) => {
             <div className="md:flex justify-between">
                 <h2 className="text-2xl font-bold">Community</h2>
                 <div className="flex gap-5 text-white mt-4 md:mt-0">
-                    <div className="bg-green-500 py-1 px-3 rounded cursor-pointer">
+                    <div className="bg-green-500 text-center py-2 px-3 rounded cursor-pointer">
                         <Link to='/add-company-info'>
                             <h4 className="text-sm font-semibold">Add New Directory</h4>
                         </Link>
                     </div>
-                    <button onClick={handleFilterClick} className="bg-yellow-500 py-1 px-3 rounded">
+                    <button onClick={handleFilterClick} className="bg-yellow-500 py-2 px-3 rounded">
                         <h4 className="text-sm font-semibold">Filter Table</h4>
                     </button>
-                    <div className="bg-cyan-500 py-1 px-3 rounded cursor-pointer">
+                    <div className="bg-cyan-500 text-center py-2 px-3 rounded cursor-pointer">
                         <h4 className="text-sm font-semibold">Excel</h4>
                     </div>
-                    <div className="bg-purple-500 py-1 px-3 rounded cursor-pointer">
+                    <div className="bg-purple-500 py-2 px-3 rounded cursor-pointer">
                         <h4 className="text-sm font-semibold">PDF</h4>
                     </div>
                 </div>
@@ -121,29 +121,38 @@ const Table = ({companyInfo}) => {
                                                 <Link to={`/company/${item._id}`}>
                                                     <div
                                                         className="bg-blue-200 rounded-r-full w-10  h-100">
-                                                        <img className=" p-1" src={search} alt="search" />
+                                                        <img className=" p-1 hover:scale-110" src={search} alt="search" />
                                                     </div>
                                                 </Link>
 
                                             </td>
-                                            <td className="px-4 py-3 text-sm font-medium dark:text-gray-200 whitespace-nowrap">
-                                                <div className="bg-teal-300 text-center rounded-full p-3">
+                                            <td className="px-4 py-3 text-sm font-medium dark:text-gray-200 whitespace-nowrap text-center items-center">
+                                                <div className="bg-teal-300 text-center rounded-full w-8 h-8 p-1.5 hover:bg-red-500 hover:text-white">
                                                     {index + 1}
                                                 </div>
                                             </td>
-                                            <td className="px-6 py-2 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                            <td className="px-4 mx-8 py-2 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                 <div className="flex items-center gap-x-2">
-                                                    <img className="object-cover w-8 h-8 rounded-full" src={"https://i.ibb.co/mFjYLYS/titleImg.png"} alt="Company Representative" />
+                                                    <img
+                                                        className="object-cover w-8 h-8 rounded-full"
+                                                        src={item.company_img}
+                                                        alt="Company Representative" />
                                                     <div>
                                                         <h2 className="font-medium text-gray-800 dark:text-white">{item.company_name}</h2>
                                                         <p className="text-sm font-normal text-gray-600 dark:text-gray-400">{item.category}</p>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td className="px-6 py-3 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                            <td className="px-5 py-3 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                 <div className="flex items-center gap-x-2">
-                                                    <img className="object-cover w-8 h-8 rounded-full" src={"https://i.ibb.co/7Ymcn37/Ellipse-1.png"} alt="Company Representative" />
-                                                    <div>{item.company_representative}</div>
+                                                    <img
+                                                        className="object-cover w-8 h-8 rounded-full"
+                                                        src={item.representative_img}
+                                                        alt="Company Representative" />
+                                                    <div>
+                                                        <h2 className="font-medium text-gray-800 dark:text-white">{item.company_representative}</h2>
+                                                        <p className="text-sm font-normal text-gray-600 dark:text-gray-400">{item.designation}</p>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td className="px-4 py-3 text-sm whitespace-nowrap">{item.membership_number}</td>
@@ -162,7 +171,7 @@ const Table = ({companyInfo}) => {
                                             </td>
                                             <td className="p-3">
                                                 <Link to={`/company-update/${item._id}`}>
-                                                <CiEdit
+                                                    <CiEdit
                                                         className="text-3xl p-1 text-white bg-green-500 hover:scale-110 rounded" />
                                                 </Link>
                                             </td>
