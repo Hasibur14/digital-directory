@@ -1,3 +1,5 @@
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { CiEdit } from "react-icons/ci";
@@ -5,6 +7,7 @@ import { FaRegEye } from "react-icons/fa6";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 import search from "../../assets/search.png";
 import FilterModal from "../Modal/FilterModal";
 
@@ -13,8 +16,6 @@ import FilterModal from "../Modal/FilterModal";
 
 const Table = ({ companyInfo }) => {
 
-    // const [company, loading, refetch] = useCompany();
-    // const axiosPublic = useAxios()
 
     const [visibleRows, setVisibleRows] = useState(10);
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -66,6 +67,70 @@ const Table = ({ companyInfo }) => {
     };
 
 
+    // Download PDF
+    const handlePDFDownload = () => {
+        const doc = new jsPDF();
+
+        doc.text("Company Information", 14, 10);
+        const tableColumn = [
+            "No",
+            "Company Name",
+            "Company Representative",
+            "Membership Number",
+            "Designation",
+            "Nature of Business",
+            "Office Address",
+            "Telephone",
+            "Email"
+        ];
+        const tableRows = [];
+
+        companyInfo.forEach((item, index) => {
+            const rowData = [
+                index + 1,
+                item.company_name,
+                item.company_representative,
+                item.membership_number,
+                item.designation,
+                item.nature_of_business,
+                item.office_address,
+                item.telephone,
+                item.email
+            ];
+            tableRows.push(rowData);
+        });
+
+        doc.autoTable({
+            head: [tableColumn],
+            body: tableRows,
+        });
+
+        doc.save('company_info.pdf');
+    };
+
+    // Download Excel
+    const handleExcelDownload = () => {
+        const worksheet = XLSX.utils.json_to_sheet(
+            companyInfo.map((item, index) => ({
+                No: index + 1,
+                CompanyName: item.company_name,
+                CompanyRepresentative: item.company_representative,
+                MembershipNumber: item.membership_number,
+                Designation: item.designation,
+                NatureOfBusiness: item.nature_of_business,
+                OfficeAddress: item.office_address,
+                Telephone: item.telephone,
+                Email: item.email
+            }))
+        );
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "CompanyInfo");
+
+        // Export the Excel file
+        XLSX.writeFile(workbook, "company_info.xlsx");
+    };
+
+
     return (
         <div className="shadow-2xl border rounded-2xl my-16 px-10 py-5">
             <div className="md:flex justify-between">
@@ -76,13 +141,19 @@ const Table = ({ companyInfo }) => {
                             <h4 className="text-sm font-semibold">Add New Directory</h4>
                         </Link>
                     </div>
-                    <button onClick={handleFilterClick} className="bg-yellow-500 py-2 px-3 rounded">
+                    <button
+                        onClick={handleFilterClick}
+                        className="bg-yellow-500 py-2 px-3 rounded">
                         <h4 className="text-sm font-semibold">Filter Table</h4>
                     </button>
-                    <div className="bg-cyan-500 text-center py-2 px-3 rounded cursor-pointer">
+                    <div
+                        onClick={handleExcelDownload}
+                        className="bg-cyan-500 text-center py-2 px-3 rounded cursor-pointer">
                         <h4 className="text-sm font-semibold">Excel</h4>
                     </div>
-                    <div className="bg-purple-500 py-2 px-3 rounded cursor-pointer">
+                    <div
+                        onClick={handlePDFDownload}
+                        className="bg-purple-500 py-2 px-3 rounded cursor-pointer">
                         <h4 className="text-sm font-semibold">PDF</h4>
                     </div>
                 </div>

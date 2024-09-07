@@ -7,7 +7,7 @@ import './styles/style.css';
 
 const Home = () => {
 
-    const [companyData] = useCompany()
+    const [companyData, loading] = useCompany()
 
     const [companyInfo, setCompanyInfo] = useState([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -74,6 +74,8 @@ const Home = () => {
         setIsDropdownOpen(false);
     };
 
+ 
+    
     return (
         <div className="container mx-auto my-10 p-4 lg:p-0">
             <div className="card-main lg:flex justify-between gap-5">
@@ -249,7 +251,9 @@ const Home = () => {
                 </div>
             </div>
 
-            <Table companyInfo={companyInfo} />
+            <Table 
+            companyInfo={companyInfo} 
+            />
         </div >
     );
 };
