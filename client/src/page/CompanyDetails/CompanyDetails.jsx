@@ -1,5 +1,6 @@
 import { TiArrowBack } from "react-icons/ti";
 import { Link, useLoaderData } from "react-router-dom";
+import logoImg from "../../../src/assets/logo.png";
 
 
 const CompanyDetails = () => {
@@ -62,7 +63,11 @@ const CompanyDetails = () => {
                         </div>
                     </div>
                 </div>
-
+                <div className="flex justify-end">
+                <h4 className="font-semibold ">Powered By
+                    <img className="w-16 ml-2 bg-slate-600 rounded" src={logoImg} alt="360D" />
+                  </h4>
+            </div>
             </div>
         </div>
     );
