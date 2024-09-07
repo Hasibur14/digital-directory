@@ -25,7 +25,7 @@ const CompanyDetails = () => {
                             alt="representative image" />
                         <div className="">
                             <img
-                                className="w-32 h-28 my-5 lg:my-0"
+                                className="w-32 h-28 my-5 lg:my-0 object-cover"
                                 src={company_img}
                                 alt="Company logo" />
                             <div className="space-y-5 lg:space-y-0">

@@ -27,7 +27,7 @@ const Footer = () => {
                             />
                         </div>
                         <div className=" text-justify text-[#cdcdcd] font-medium font-['Inter']">
-                            360D SOUL Limited has adopted the highest standards of IT service
+                            BMCCI has adopted the highest standards of IT service
                             and consultancy quality and operational excellence, enabling its
                             clients across a wide range of industries to transform into a truly
                             digital, data-driven enterprise.

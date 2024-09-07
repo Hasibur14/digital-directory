@@ -2,42 +2,36 @@
 
 /* Media query for screens between 1250px and 1536px */
 @media (min-width: 1290px) and (max-width: 1536px) {
-   .card-1 {
- gap: 22px;
-   }
+ 
+    .alphabet-div {
+        gap: 8px; 
+      }
+    
+      .alphabet span {
+        width: px; 
+        padding: 2px 2px 2px 2px;
+        text-align: center;
+      }
+    
+      .alphabet-text {
+        justify-content: center; 
+      }
 
-   .directory-view  {
-    font-size: 16px;
-   }
+      .alp-dop {
+       margin-bottom:0px;
+      }
 
-    .alphabet-card {
-        padding: 4px 10px;
-    }
-    .alphabet-card-text {
-        padding: 6px ;
-        margin-top: 12px;
-    }
+  }
 
-    .alphabet-text {
-        padding: 0px 12px;
-    }
 
-   .alphabet{
-    gap: 10px;
-    padding: 6px;
-    margin: 0px 2px;
-   }
-  
+  @media (min-width: 1540px) and (max-width: 2000px) {
+
+    .alp-dop {
+        margin-top: 5px;
+       }
+
   }
   
 
-@media (min-width: 100px) and (max-width: 1289px) {
-   
-    .alphabet{
-     padding: 2px;
 
-    }
-   
-   
-   }
    

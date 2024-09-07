@@ -7,7 +7,7 @@ import './styles/style.css';
 
 const Home = () => {
 
-    const [companyData, loading] = useCompany()
+    const [companyData] = useCompany()
 
     const [companyInfo, setCompanyInfo] = useState([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -74,8 +74,8 @@ const Home = () => {
         setIsDropdownOpen(false);
     };
 
- 
-    
+
+
     return (
         <div className="container mx-auto my-10 p-4 lg:p-0">
             <div className="card-main lg:flex justify-between gap-5">
@@ -126,28 +126,26 @@ const Home = () => {
                     <div className="alphabet-card lg:w-[50%] shadow-lg md:shadow-2xl px-5 py-6 rounded-2xl border-2 relative">
                         <h2 className="alphabet-card-text text-xl font-semibold">Filter By Alphabet</h2>
                         <div>
-                            <div className="alphabet-text flex bg-cyan-300 rounded-full text-center mt-8 ">
-                                <div className="alphabet flex bg-cyan-300 rounded-3xl py-[6px] justify-between px-4 text-center lg:gap-[18px]">
-                                    {['A', 'B', 'C', 'D', 'E'].map(letter => (
-                                        <span
-                                            key={letter}
-                                            className="bg-white w-10 rounded-full px-1 py-[6px] text-center cursor-pointer"
-                                            onClick={() => handleLetterClick(letter)}
-                                        >
-                                            {letter}
-                                        </span>
-                                    ))}
-                                </div>
+   <div className="alphabet flex bg-cyan-300 rounded-3xl py-[6px] justify-between px-4 text-center gap-4  md:gap-12 lg:gap-[18px] mt-7">
+                                {['A', 'B', 'C', 'D', 'E'].map(letter => (
+                                    <span
+                                        key={letter}
+                                        className="bg-white w-10 rounded-full px-1 py-[6px] text-center cursor-pointer"
+                                        onClick={() => handleLetterClick(letter)}
+                                    >
+                                        {letter}
+                                    </span>
+                                ))}
                                 <span>
                                     <IoIosArrowForward
                                         onClick={toggleDropdown}
-                                        className={`text-2xl text-center items-center mt-3 mr-2 transition-transform ${isDropdownOpen ? 'rotate-90' : ''}`}
+                                        className={`alp-dop text-2xl text-center items-center mt- mr-2 transition-transform ${isDropdownOpen ? 'rotate-90' : ''}`}
                                     />
                                 </span>
                             </div>
 
 
-                            {/* Dropdown menu */}
+                           {/* Dropdown menu */}
                             {isDropdownOpen && (
                                 <ul className="absolute top-full left-0 mt-2 bg-white p-5 space-y-2 border-2 rounded w-full max-h-64 overflow-auto z-50">
                                     <li>
@@ -251,8 +249,8 @@ const Home = () => {
                 </div>
             </div>
 
-            <Table 
-            companyInfo={companyInfo} 
+            <Table
+                companyInfo={companyInfo}
             />
         </div >
     );
